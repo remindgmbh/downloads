@@ -1,22 +1,26 @@
 {
-    "name": "remind/name",
+    "name": "remind/downloads",
     "type": "typo3-cms-extension",
-    "description": "[DESCRIPTION]",
+    "description": "REMIND - Downloads Extension",
     "license": [ "GPL-3.0-or-later" ],
     "authors": [
         {
             "name": "REMIND GmbH",
             "email": "technik@remind.de"
+        },
+        {
+            "name": "Dominik Lehrl",
+            "email": "d.lehrl@remind.de"
         }
     ],
     "autoload": {
         "psr-4": {
-            "Remind\\[NAME]\\": "Classes"
+            "Remind\\Downloads\\": "Classes"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Remind\\[NAME]\\Tests\\": "Tests"
+            "Remind\\Downloads\\Tests\\": "Tests"
         }
     },
     "config": {
@@ -26,19 +30,15 @@
         "allow-plugins": {
             "typo3/cms-composer-installers": true,
             "typo3/class-alias-loader": true,
-            "dealerdirect/phpcodesniffer-composer-installer": true,
-            "phpstan/extension-installer": true
+            "dealerdirect/phpcodesniffer-composer-installer": true
         }
     },
     "require": {
-        "typo3/cms-core": "^12.4"
+        "remind/extbase": "^2.0 | dev-develop",
+        "remind/headless": "^4.1 | dev-develop"
     },
     "require-dev": {
-        "dealerdirect/phpcodesniffer-composer-installer": "^1.0",
-        "phpstan/extension-installer": "^1.4",
-        "phpstan/phpstan": "^1.12",
         "remind/coding-standard": "^1.0",
-        "saschaegerer/phpstan-typo3": "^1.10",
         "slevomat/coding-standard": "^8.15",
         "squizlabs/php_codesniffer": "^3.10"
     },
@@ -46,16 +46,11 @@
     "prefer-stable": true,
     "extra": {
         "typo3/cms": {
-            "extension-key": "rmnd_name"
+            "extension-key": "rmnd_downloads"
         }
     },
     "scripts": {
         "phpcs": "@php ./vendor/bin/phpcs --standard=phpcs.xml --extensions=php --report=full -n .",
-        "phpcbf": "@php ./vendor/bin/phpcbf --standard=phpcs.xml --extensions=php .",
-        "phpstan": "@php ./vendor/bin/phpstan analyse -c phpstan.neon",
-        "static-analysis": [
-            "@composer phpcs",
-            "@composer phpstan"
-        ]
+        "phpcbf": "@php ./vendor/bin/phpcbf --standard=phpcs.xml --extensions=php ."
     }
 }
