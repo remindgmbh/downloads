@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+    <file source-language="en" datatype="plaintext" product-name="rmnd_downloads">
+        <header/>
+        <body>
+            <trans-unit id="description">
+                <source>Description</source>
+            </trans-unit>
+            <trans-unit id="download">
+                <source>Download</source>
+            </trans-unit>
+            <trans-unit id="downloadGroup">
+                <source>Download group</source>
+            </trans-unit>
+            <trans-unit id="downloads">
+                <source>Downloads</source>
+            </trans-unit>
+            <trans-unit id="file">
+                <source>File</source>
+            </trans-unit>
+            <trans-unit id="groups">
+                <source>Groups</source>
+            </trans-unit>
+            <trans-unit id="image">
+                <source>Image</source>
+            </trans-unit>
+            <trans-unit id="name">
+                <source>Name</source>
+            </trans-unit>
+            <trans-unit id="thumbnail">
+                <source>Thumbnail</source>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>
