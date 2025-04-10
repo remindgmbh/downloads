@@ -15,9 +15,17 @@ return [
         ],
         'downloads' => [
             'config' => [
-                'type' => 'passthrough',
+                'foreign_table' => 'tx_downloads_domain_model_download',
+                'foreign_table_where' => 'AND {#tx_downloads_domain_model_download}.{#sys_language_uid} IN (-1,0)',
+                'MM' => 'tx_downloads_domain_model_download_group_mm',
+                'multiple' => 0,
+                'renderType' => 'selectMultipleSideBySide',
+                'size' => 5,
+                'type' => 'select',
             ],
             'exclude' => 0,
+            'l10n_display' => 'defaultAsReadonly',
+            'l10n_mode' => 'exclude',
             'label' => 'LLL:EXT:rmnd_downloads/Resources/Private/Language/locallang_tca.xlf:downloads',
         ],
         'hidden' => [

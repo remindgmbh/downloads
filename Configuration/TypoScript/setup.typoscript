@@ -1,0 +1,47 @@
+plugin {
+    tx_downloads {
+        settings {
+            jsonFields {
+                Remind\Downloads\Domain\Model\Download = name,file,thumbnail
+                Remind\Downloads\Domain\Model\Group = name,description,image,downloads
+            }
+            displayNameFields = name
+        }
+    }
+}
+
+tt_content {
+    downloads_selectionlist =< lib.contentElementWithHeader
+    downloads_selectionlist {
+        fields {
+            content {
+                fields {
+                    data = USER
+                    data {
+                        userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
+                        vendorName = Remind
+                        extensionName = Downloads
+                        pluginName = SelectionList
+                    }
+                }
+            }
+        }
+    }
+
+    downloads_groupselectionlist =< lib.contentElementWithHeader
+    downloads_groupselectionlist {
+        fields {
+            content {
+                fields {
+                    data = USER
+                    data {
+                        userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
+                        vendorName = Remind
+                        extensionName = Downloads
+                        pluginName = GroupSelectionList
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,23 @@
+mod.wizards.newContentElement.wizardItems {
+    downloads {
+        header = LLL:EXT:rmnd_downloads/Resources/Private/Language/locallang_tca.xlf:downloads
+        elements {
+            downloads_selectionlist {
+                iconIdentifier = downloadsselectionlist
+                title = LLL:EXT:rmnd_downloads/Resources/Private/Language/locallang_tca.xlf:selectionList
+                tt_content_defValues {
+                    CType = downloads_selectionlist
+                }
+            }
+            downloads_groupselectionlist {
+                iconIdentifier = downloadsselectionlist
+                title = LLL:EXT:rmnd_downloads/Resources/Private/Language/locallang_tca.xlf:groupSelectionList
+                tt_content_defValues {
+                    CType = downloads_groupselectionlist
+                }
+            }
+        }
+        show := addToList(downloads_selectionlist)
+        show := addToList(downloads_groupselectionlist)
+    }
+}

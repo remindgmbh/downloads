@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<T3DataStructure>
+    <sheets>
+        <groups>
+            <ROOT>
+                <sheetTitle>LLL:EXT:rmnd_downloads/Resources/Private/Language/locallang_flex.xlf:records</sheetTitle>
+                <type>array</type>
+                <el>
+                    <records>
+                        <label>LLL:EXT:rmnd_downloads/Resources/Private/Language/locallang_flex.xlf:selection</label>
+                        <description></description>
+                        <config>
+                            <type>select</type>
+                            <renderType>selectMultipleSideBySide</renderType>
+                            <size>7</size>
+                            <foreign_table>tx_downloads_domain_model_group</foreign_table>
+                            <foreign_table_where>AND tx_downloads_domain_model_group.pid = (SELECT pages FROM tt_content WHERE uid=###THIS_UID###)</foreign_table_where>
+                        </config>
+                    </records>
+                </el>
+            </ROOT>
+        </groups>
+    </sheets>
+</T3DataStructure>

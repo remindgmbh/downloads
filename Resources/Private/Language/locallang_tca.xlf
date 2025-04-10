@@ -21,11 +21,17 @@
             <trans-unit id="groups">
                 <source>Groups</source>
             </trans-unit>
+            <trans-unit id="groupSelectionList">
+                <source>Download groups selection</source>
+            </trans-unit>
             <trans-unit id="image">
                 <source>Image</source>
             </trans-unit>
             <trans-unit id="name">
                 <source>Name</source>
+            </trans-unit>
+            <trans-unit id="selectionList">
+                <source>Download items selection</source>
             </trans-unit>
             <trans-unit id="thumbnail">
                 <source>Thumbnail</source>

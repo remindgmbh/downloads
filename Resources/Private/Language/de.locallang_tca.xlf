@@ -21,11 +21,17 @@
             <trans-unit id="groups">
                 <target>Gruppen</target>
             </trans-unit>
+            <trans-unit id="groupSelectionList">
+                <target>Download-Gruppen Auswahl</target>
+            </trans-unit>
             <trans-unit id="image">
                 <target>Bild</target>
             </trans-unit>
             <trans-unit id="name">
                 <target>Name</target>
+            </trans-unit>
+            <trans-unit id="selectionList">
+                <target>Downloads Auswahl</target>
             </trans-unit>
             <trans-unit id="thumbnail">
                 <target>Thumbnail</target>
