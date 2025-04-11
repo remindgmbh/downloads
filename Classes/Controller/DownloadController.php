@@ -6,8 +6,6 @@ namespace Remind\Downloads\Controller;
 
 use JsonSerializable;
 use Psr\Http\Message\ResponseInterface;
-use Remind\Downloads\Domain\Model\Download;
-use Remind\Downloads\Domain\Model\Group;
 use Remind\Downloads\Domain\Repository\DownloadRepository;
 use Remind\Downloads\Domain\Repository\GroupRepository;
 use TYPO3\CMS\Core\Service\FlexFormService;
@@ -58,7 +56,7 @@ class DownloadController extends ActionController
     /**
      * @return array<mixed>
      */
-    protected function getRecordUidsFromFlexFormSettings(): array
+    protected function getRecordUidsFromFlexFormSettings(string $recordsFieldName = 'records'): array
     {
         /** @var \TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer $contentObject */
         $contentObject = $this->request->getAttribute('currentContentObject');
@@ -67,13 +65,13 @@ class DownloadController extends ActionController
             $contentObject->data['pi_flexform'] ?? ''
         );
 
-        return explode(',', $flexFormContent['records'] ?? '');
+        return explode(',', $flexFormContent[$recordsFieldName] ?? '');
     }
 
     /**
      * @return array<mixed>
      */
-    protected function serializeRecord(Download|Group|null $record): ?array
+    protected function serializeRecord(mixed $record): ?array
     {
         return $record instanceof JsonSerializable
             ? json_decode(json_encode($record) ?: '', true)
