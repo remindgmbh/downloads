@@ -2,7 +2,7 @@ plugin {
     tx_downloads {
         settings {
             jsonFields {
-                Remind\Downloads\Domain\Model\Download = name,file,thumbnail
+                Remind\Downloads\Domain\Model\Download = name,file,thumbnail,fileSize
                 Remind\Downloads\Domain\Model\Group = name,description,image,downloads
             }
             displayNameFields = name

@@ -84,4 +84,13 @@ class Download extends AbstractJsonSerializableEntity
 
         return $this;
     }
+
+    public function getFileSize(): int
+    {
+        $file = $this->getFile();
+        if ($file?->getOriginalResource() !== null) {
+            return $file->getOriginalResource()->getSize();
+        }
+        return 0;
+    }
 }
