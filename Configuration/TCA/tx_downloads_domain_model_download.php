@@ -108,6 +108,7 @@ return [
         'label_alt_force' => true,
         'languageField' => 'sys_language_uid',
         'origUid' => 't3_origuid',
+        'searchFields' => 'name',
         'sortby' => 'sorting',
         'title' => 'LLL:EXT:rmnd_downloads/Resources/Private/Language/locallang_tca.xlf:download',
         'translationSource' => 'l10n_source',
