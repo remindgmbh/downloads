@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Remind\Downloads\Controller;
 
-use JsonSerializable;
 use Psr\Http\Message\ResponseInterface;
 use Remind\Downloads\Domain\Repository\DownloadRepository;
 use Remind\Downloads\Domain\Repository\GroupRepository;
+use Remind\Extbase\Service\SerializationService;
 use TYPO3\CMS\Core\Service\FlexFormService;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
@@ -20,6 +20,7 @@ class DownloadController extends ActionController
         private readonly DownloadRepository $downloadRepository,
         private readonly FlexFormService $flexFormService,
         private readonly GroupRepository $groupRepository,
+        private readonly SerializationService $serializationService,
     ) {
     }
 
@@ -28,9 +29,8 @@ class DownloadController extends ActionController
         $recordUids = $this->getRecordUidsFromFlexFormSettings();
 
         $records = array_map(function ($recordUid) {
-            $record = $this->serializeRecord(
-                $this->downloadRepository->findByUid((int) $recordUid)
-            );
+            $entity = $this->downloadRepository->findByUid((int) $recordUid);
+            $record = $this->seriliazeDownloadRecord($entity);
 
             return $record;
         }, $recordUids);
@@ -44,8 +44,14 @@ class DownloadController extends ActionController
 
         $records = array_map(function ($recordUid) {
             $record = $this->serializeRecord(
-                $this->groupRepository->findByUid((int) $recordUid)
+                $this->groupRepository->findByUid((int) $recordUid),
             );
+
+            $downloadsSerialized = [];
+            foreach (($record['downloads'] ?? []) as $download) {
+                $downloadsSerialized[] = $this->seriliazeDownloadRecord($download);
+            }
+            $record['downloads'] = $downloadsSerialized;
 
             return $record;
         }, $recordUids);
@@ -71,11 +77,20 @@ class DownloadController extends ActionController
     /**
      * @return array<mixed>
      */
-    protected function serializeRecord(mixed $record): ?array
+    protected function seriliazeDownloadRecord(mixed $record): ?array
     {
-        return $record instanceof JsonSerializable
-            ? json_decode(json_encode($record) ?: '', true)
-            : null;
+        $properties = array_keys($record->_getProperties());
+        $properties[] = 'fileSize';
+        return $this->serializeRecord($record, $properties);
+    }
+
+    /**
+     * @return array<mixed>
+     */
+    protected function serializeRecord(mixed $record, ?array $properties = null): ?array
+    {
+        $properties ??= array_keys($record->_getProperties());
+        return $this->serializationService->serializeBaseProperties($record, $properties);
     }
 
     protected function processJsonResponse(?array $records): ResponseInterface
