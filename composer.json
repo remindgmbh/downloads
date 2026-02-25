@@ -34,8 +34,8 @@
         }
     },
     "require": {
-        "remind/extbase": "13.x-dev | dev-develop",
-        "remind/headless": "13.x-dev | dev-develop"
+        "remind/extbase": "^3.0.0 | dev-develop",
+        "remind/headless": "^5.0.0 | dev-develop"
     },
     "require-dev": {
         "remind/coding-standard": "^1.0",
