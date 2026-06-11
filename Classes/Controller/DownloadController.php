@@ -30,7 +30,7 @@ class DownloadController extends ActionController
 
         $records = array_map(function ($recordUid) {
             $entity = $this->downloadRepository->findByUid((int) $recordUid);
-            $record = $this->seriliazeDownloadRecord($entity);
+            $record = $this->serializeDownloadRecord($entity);
 
             return $record;
         }, $recordUids);
@@ -49,7 +49,7 @@ class DownloadController extends ActionController
 
             $downloadsSerialized = [];
             foreach (($record['downloads'] ?? []) as $download) {
-                $downloadsSerialized[] = $this->seriliazeDownloadRecord($download);
+                $downloadsSerialized[] = $this->serializeDownloadRecord($download);
             }
             $record['downloads'] = $downloadsSerialized;
 
@@ -77,7 +77,7 @@ class DownloadController extends ActionController
     /**
      * @return array<mixed>
      */
-    protected function seriliazeDownloadRecord(mixed $record): ?array
+    protected function serializeDownloadRecord(mixed $record): ?array
     {
         $properties = array_keys($record->_getProperties());
         $properties[] = 'fileSize';
