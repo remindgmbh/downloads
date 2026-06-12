@@ -37,3 +37,8 @@ The extension includes Composer scripts for code quality checks:
   ```bash
   composer phpcbf
   ```
+
+- **Run PHP Unit test**:
+  ```bash
+  composer phpunit
+  ```
